@@ -1,3 +1,4 @@
-Controlador\tarea.class
 com\mycompany\ejerc7\resources\JakartaEE10Resource.class
+modelo\Tarea.class
 com\mycompany\ejerc7\JakartaRestConfiguration.class
+controlador\TareaServlet.class

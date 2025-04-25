@@ -2,20 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador;
+package modelo;
 
 /**
  *
  * @author Personal
  */
-public class tarea {
+public class Tarea {
     
     private int id;
     private String descripcion;
     private boolean completada;
     
     //Constructor
-    public tarea(int id, String descripcion) {
+    public Tarea(int id, String descripcion) {
         this.id = id;
         this.descripcion = descripcion;
         this.completada = false;
@@ -39,6 +39,9 @@ public class tarea {
     public void setcompletada(boolean completada) {
         this.completada = completada;
     }
-    
+
+    public void setCompletada(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
