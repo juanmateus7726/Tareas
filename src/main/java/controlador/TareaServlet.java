@@ -11,8 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.Authenticator;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Tarea;
@@ -39,7 +37,7 @@ public class TareaServlet extends HttpServlet {
             request.getRequestDispatcher("listarTareas.jsp").forward(request, response);
         } else if ("/nueva".equals(pathInfo)) {
             //Formulario nueva tarea
-            request.getRequestDispatcher("nuevaTarea.jsp").forward(request, response);
+            request.getRequestDispatcher("/nuevaTarea.jsp").forward(request, response);
         }else if (pathInfo.startsWith("/completar/")) {
             // Completar tarea
             try {
