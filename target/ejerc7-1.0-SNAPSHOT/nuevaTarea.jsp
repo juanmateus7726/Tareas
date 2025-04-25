@@ -1,6 +1,6 @@
 <%-- 
-    Document   : tarea
-    Created on : 24/04/2025, 10:40:06 a. m.
+    Document   : nuevaTarea
+    Created on : 25/04/2025, 10:18:04 a. m.
     Author     : Personal
 --%>
 
@@ -13,7 +13,6 @@
     </head>
     <body>
         <h1>Nueva Tarea</h1>
-        
         <form action="${pageContext.request.contextPath}/tareas/guardar" method="post">
             <label for="descripcion">Descripcion:</label>
             <input type="text" id="descripcion" name="descripcion" required>
@@ -21,6 +20,6 @@
             <input type="submit" value="Guardar">
         </form>
             <br>
-            <a href="${pageContext.request.contextPath}/tareas">Volver a la lista </a>
+            <a href="${pageContext.request.contextPath}/tareas">Volver a la lista</a>
     </body>
 </html>
