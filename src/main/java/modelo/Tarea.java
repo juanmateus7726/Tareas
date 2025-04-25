@@ -33,15 +33,11 @@ public class Tarea {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public boolean iscompletada() {
+    public boolean isCompletada() {
         return completada;
     }
-    public void setcompletada(boolean completada) {
+    public void setCompletada(boolean completada) {
         this.completada = completada;
-    }
-
-    public void setCompletada(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

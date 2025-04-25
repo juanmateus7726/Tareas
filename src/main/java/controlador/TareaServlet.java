@@ -11,8 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.Authenticator;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Tarea;
@@ -26,26 +24,26 @@ public class TareaServlet extends HttpServlet {
     protected void doGet (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        List<Tarea> listaTarea = (List<Tarea>)
+        List<Tarea> listarTareas = (List<Tarea>)
                 session.getAttribute("tareas");
-        if (listaTarea == null) {
-            listaTarea = new ArrayList<>();
-            session.setAttribute("tareas", listaTarea);
+        if (listarTareas == null) {
+            listarTareas = new ArrayList<>();
+            session.setAttribute("tareas", listarTareas);
         }
         String pathInfo = request.getPathInfo();
         
         if (pathInfo == null || "/".equals(pathInfo)) {
             // Listar tareas
-            request.getRequestDispatcher("/WEB-INF/views/listarTareas.jsp").forward(request, response);
+            request.getRequestDispatcher("listarTareas.jsp").forward(request, response);
         } else if ("/nueva".equals(pathInfo)) {
             //Formulario nueva tarea
-            request.getRequestDispatcher("/WEB-INF/views/nuevaTarea.jsp").forward(request, response);
+            request.getRequestDispatcher("/nuevaTarea.jsp").forward(request, response);
         }else if (pathInfo.startsWith("/completar/")) {
             // Completar tarea
             try {
                 int id =
                         Integer.parseInt(pathInfo.substring("/completar/".length()));
-                for (Tarea tarea : listaTarea) {
+                for (Tarea tarea : listarTareas) {
                     if (tarea.getId() == id) {
                         tarea.setCompletada(true);
                         break;
@@ -63,12 +61,12 @@ public class TareaServlet extends HttpServlet {
              throws ServletException, IOException {
          
          HttpSession session = request.getSession();
-         List<Tarea> listaTareas = (List<Tarea>)
+         List<Tarea> listarTareas = (List<Tarea>)
                  session.getAttribute("tareas");
          
-         if (listaTareas == null) {
-             listaTareas = new ArrayList<>();
-             session.setAttribute("tareas", listaTareas);
+         if (listarTareas == null) {
+             listarTareas = new ArrayList<>();
+             session.setAttribute("tareas", listarTareas);
          }
          String pathInfo = request.getPathInfo();
          
@@ -76,11 +74,11 @@ public class TareaServlet extends HttpServlet {
              String descripcion = request.getParameter("descripcion");
              if (descripcion != null && !descripcion.trim().isEmpty()) {
                  int nuevoId = 1;
-                 if (!listaTareas.isEmpty()) {
-                     nuevoId = listaTareas.get(listaTareas.size() - 1).getId() + 1;
+                 if (!listarTareas.isEmpty()) {
+                     nuevoId = listarTareas.get(listarTareas.size() - 1).getId() + 1;
                  }
                  Tarea nuevaTarea = new Tarea(nuevoId, descripcion);
-                 listaTareas.add(nuevaTarea);
+                 listarTareas.add(nuevaTarea);
              }
              response.sendRedirect(request.getContextPath() + "/tareas");
          }
